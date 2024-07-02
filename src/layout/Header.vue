@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col mt-10" style="width: 1080px">
+  <div class="flex-col mt-10" style="width: 1190px">
     <div
       class="flex space-between"
       style="justify-content: space-between; width: 100%"
@@ -11,7 +11,7 @@
       <div class="flex">
         <img src="@/assets/vue.svg" style="width: 40px; height: 40px" alt="" />
         <div><a class="logo-cate">演示demo</a></div>
-        <div class="flex  ml-4 mt-3">
+        <div class="flex  ml-3 mt-4">
           <div class="text-14px ">郑州</div>
           <Icon>
             <svg
@@ -109,8 +109,8 @@
               border: 1px solid #1fb081;
               color: #1fb081;
               align-items: center;
-              height: 40px;
-              width: 120px;
+              height: 35px;
+              width: 110px;
               border-radius: 0;
             "
           >
@@ -125,7 +125,7 @@
           </a-button>
         </div>
         </div>
-        <div class="text-[#998] text-14px mt-2 flex">
+        <div class="text-[#998] text-12px mt-2 flex">
           <div class="mr-5" v-for="(item,index) in top_slect" :key="index">
             {{item.name}}
           </div>
@@ -140,7 +140,10 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import Icon from "@ant-design/icons-vue";
-const top_slect = ref([{name: "全部", value: "0",is_select:true},{name: "店铺出租转让", value: "1",is_select:false}]);
+const top_slect = ref([
+{name: "金城时代广场", value: "0",is_select:true},
+{name: "朗悦星悦荟", value: "1",is_select:false},
+{name: "公园道", value: "1",is_select:false}])
 const valueSearch = ref("");
 const onSearch = (e: any) => {
   console.log(e);
@@ -169,10 +172,10 @@ const onSearch = (e: any) => {
   background: #0b0f12;
 }
 .custom-search-input :deep(.ant-input) {
-  height: 30px; /* 自定义你的高度 */
+  height: 26px; /* 自定义你的高度 */
 }
 .custom-search-input :deep(.ant-input-group-addon) {
-  height: 32px; /* 与输入框高度一致 */
+  height: 26px; /* 与输入框高度一致 */
   background-color: #1fb081;
   button {
     background-color: transparent;
