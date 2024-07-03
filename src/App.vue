@@ -5,7 +5,6 @@ import  AppLayout  from './layout/AppLayout.vue'
 
 <template>
    <div id="app">
-    <a-breadcrumb :router="true" separator=">" />
       <AppLayout />
     </div>
 </template>

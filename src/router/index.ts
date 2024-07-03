@@ -7,12 +7,14 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/home',
-    component: () => import('@/views/Home.vue')
+    component: () => import('@/views/Home.vue'),
+    meta: { breadcrumb: '首页' },
   },
   {
     path: '/detail',
     name: 'Detail',
-    component: () => import( '@/views/Detail.vue')
+    component: () => import( '@/views/Detail.vue'),
+    meta: { breadcrumb: '详情' },
   }
 ]
 
