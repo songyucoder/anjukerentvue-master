@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="mt-8 flex-col">
-          <div  class="mr-40px wshop pt-30px" v-for="(item, index) in 10" :key="index">
+          <div  class="mr-40px wshop pt-30px" v-for="(item, index) in 10" :key="index" @click="clickDetailEvent(item)">
             <WHouse :options="item" />
           </div>
           <div class="flex items-center  mt-4">
@@ -104,28 +104,11 @@
           <div
             class="flex-1 border mt-4"
             v-for="(item, index) in 10"
+            @click="clickDetailEvent(item)"
             :key="index"
           >
-            <div class="flex items-center justify-center">
-              <div class="flex" style="max-height: 160px">
-                <a-image
-                  style="height: 100%"
-                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                />
-              </div>
-            </div>
-            <div class="flex-col p-3">
-              <div class="text-15px">公园道一号</div>
-              <div class="text-12px text-[#999] mt-2 flex">
-                地址:
-                <div class="ml-4">香槟大道</div>
-              </div>
-              <div class="flex items-end mt-3">
-                <div class="text-17px text-[red]">5688</div>
-                <div class="text-12px text-[red] ml-1">元/㎡/天</div>
-                <div class="text-14px text-[#999] ml-4">10-200㎡</div>
-              </div>
-            </div>
+           <HHouse  :options="item" />
+          
           </div>
         </div>
       </div>
@@ -135,7 +118,10 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import WHouse from "@/components/WHouse/src/WHouse.vue";  
+import { WHouse } from "@/components/WHouse"
+import { HHouse } from "@/components/HHouse"
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const top_select = ref([
   { name: "全部", value: "0", is_select: true },
   { name: "店铺转让", value: "1", is_select: false },
@@ -396,6 +382,12 @@ const changeSizeEvent = (e:any)=>{
    console.log(e)
 }
 
+// 点击 访问详情
+
+const clickDetailEvent = (item: any) => {
+  console.log(item)
+  router.push('/detail')
+} 
 </script>
 
 <style lang="less" scoped>
@@ -419,7 +411,7 @@ const changeSizeEvent = (e:any)=>{
   background-color: #1fb081;
 }
 .wshop:hover {
-  background-color: #e0e0e0;
+  background-color: #f9f9f9;
   padding-right: 10px;
 }
 .select_nav {

@@ -2,7 +2,7 @@
   <div class="app-layout">
       <app-header />
       <div class="flex mt-5">
-        <router-link to="/"><Home /></router-link> 
+          <RouterView />
         <!-- <router-link to="/about">About</router-link> |
         <router-link to="/contact">Contact</router-link> |
         <router-link to="/tests">组件测试</router-link> -->
@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import AppFooter from './Footer.vue'
 import AppHeader from './Header.vue'
-import Home from '@/views/Home.vue'
+// import Home from '@/views/Home.vue'
 
 </script>
 

@@ -1,2 +1,2 @@
-import HHouse from './HHouse.vue'
+import HHouse from './src/HHouse.vue'
 export { HHouse }

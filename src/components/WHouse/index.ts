@@ -1,2 +1,2 @@
-import WHouse from './WHouse.vue'
+import WHouse from './src/WHouse.vue'
 export { WHouse }
