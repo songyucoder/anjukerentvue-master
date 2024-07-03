@@ -1,9 +1,11 @@
 <script  setup lang="ts">
 import  AppLayout  from './layout/AppLayout.vue'
+// import { useRoute } from 'vue-router'
 </script>
 
 <template>
    <div id="app">
+    <a-breadcrumb :router="true" separator=">" />
       <AppLayout />
     </div>
 </template>
