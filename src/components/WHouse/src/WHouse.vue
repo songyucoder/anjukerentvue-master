@@ -17,6 +17,9 @@
         <div class="text-12px text-[#000] mt-4">
           写字楼  中区/112层
         </div>
+        <div class="flex flex-wrap mt-4">
+          <a-tag class="mb-2" :bordered="false" color="processing" v-for="(item,index) in 13" :key="index">Tag {{item}}</a-tag>
+        </div>
       </div>
       <div class="flex-col flex items-center ">
         <div class="flex items-center">
@@ -33,7 +36,7 @@
         <div class="text-[#999] text-12px mt-1">月租/日租</div>
       </div>
     </div>
-    <a-divider />
+    <a-divider style="margin-bottom: 0px;" />
   </div>
 </template>
 

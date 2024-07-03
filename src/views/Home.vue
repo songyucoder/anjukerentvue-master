@@ -74,12 +74,28 @@
     <div class="flex">
       <div class="flex-1">
         <div class="flex flex-wrap mt-4">
-            <div class="faster-filter-box active" v-for="(item,index) in character_list" :key="index">{{item}}</div>
+          <div
+            class="faster-filter-box active"
+            v-for="(item, index) in character_list"
+            :key="index"
+          >
+            {{ item }}
+          </div>
         </div>
         <div class="mt-8 flex-col">
-          <div class="pr-60px" v-for="(item,index) in 10" :key="index">
-          <WHouse :options="item" />
-        </div>
+          <div  class="mr-40px wshop pt-30px" v-for="(item, index) in 10" :key="index">
+            <WHouse :options="item" />
+          </div>
+          <div class="flex items-center  mt-4">
+            <a-pagination v-model:current="current" @change="changeSizeEvent" 
+            :total="500" :pageSizeOptions="['10','20','50','100']">
+              <template #itemRender="{ type, originalElement }">
+                <a v-if="type === 'prev'">上一页</a>
+                <a v-else-if="type === 'next'">下一页</a>
+                <component :is="originalElement" v-else></component>
+              </template>
+            </a-pagination>
+          </div>
         </div>
       </div>
       <div class="flex-col">
@@ -91,11 +107,11 @@
             :key="index"
           >
             <div class="flex items-center justify-center">
-              <div class="flex"  style="max-height: 160px">
+              <div class="flex" style="max-height: 160px">
                 <a-image
-                 style="height: 100%"
-                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-              />
+                  style="height: 100%"
+                  src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                />
               </div>
             </div>
             <div class="flex-col p-3">
@@ -118,15 +134,23 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue"
-import WHouse from "@/components/WHouse/src/WHouse.vue"
+import { ref } from "vue";
+import WHouse from "@/components/WHouse/src/WHouse.vue";  
 const top_select = ref([
   { name: "全部", value: "0", is_select: true },
   { name: "店铺转让", value: "1", is_select: false },
-  { name: "店铺出租", value: "1", is_select: false },
+  { name: "商铺出租", value: "1", is_select: false },
+  { name: "商场招租", value: "1", is_select: false }
 ]);
-
-const character_list = ['纯写字楼','可注册','联合办公','视频看房','一对一服务','大平台']
+const current = ref(2);
+const character_list = [
+  "纯写字楼",
+  "可注册",
+  "联合办公",
+  "视频看房",
+  "一对一服务",
+  "大平台",
+]
 
 const select_item_list = ref([
   {
@@ -344,7 +368,7 @@ const clickSelectEvent = (item: any) => {
       obj.is_select = true;
     }
   }
-};
+}
 const select_addtional_list = ref([]) as any;
 const selectAddtionalEvent = () => {
   select_addtional_list.value = [];
@@ -354,7 +378,7 @@ const selectAddtionalEvent = () => {
     }
   }
   return select_addtional_list.value;
-};
+}
 // 对已经选择的进行删除
 const deleteTagEvent = (item: any) => {
   console.log(item);
@@ -366,7 +390,12 @@ const deleteTagEvent = (item: any) => {
       };
     }
   }
-};
+}
+//  对分页处理数据
+const changeSizeEvent = (e:any)=>{
+   console.log(e)
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -389,27 +418,31 @@ const deleteTagEvent = (item: any) => {
 .hover-effect:hover {
   background-color: #1fb081;
 }
+.wshop:hover {
+  background-color: #e0e0e0;
+  padding-right: 10px;
+}
 .select_nav {
   background-color: #1fb081;
 }
 .faster-filter-box {
-    display: inline-block;
-    background-color: #fff;
-    border: 2px solid #f0f1f2;
-    border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px 0 hsla(0, 0%, 50.2%, .07);
-    box-shadow: 0 2px 4px 0 hsla(0, 0%, 50.2%, .07);
-    padding: 7px 12px;
-    margin-right: 18px;
-    color: #666;
-    margin-bottom: 4px;
-    font-size: 12px;
-    }
-  .active {
-    background: linear-gradient(62.6deg, #1fb081, #1fb081 1%, #46d5a7);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 2px 4px 0 rgba(31, 176, 129, .3);
-    box-shadow: 0 2px 4px 0 rgba(31, 176, 129, .3);
-    color: #fff;
+  display: inline-block;
+  background-color: #fff;
+  border: 2px solid #f0f1f2;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 4px 0 hsla(0, 0%, 50.2%, 0.07);
+  box-shadow: 0 2px 4px 0 hsla(0, 0%, 50.2%, 0.07);
+  padding: 7px 12px;
+  margin-right: 18px;
+  color: #666;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+.active {
+  background: linear-gradient(62.6deg, #1fb081, #1fb081 1%, #46d5a7);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(31, 176, 129, 0.3);
+  box-shadow: 0 2px 4px 0 rgba(31, 176, 129, 0.3);
+  color: #fff;
 }
 </style>
