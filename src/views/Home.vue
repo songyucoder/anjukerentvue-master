@@ -82,7 +82,7 @@
             {{ item }}
           </div>
         </div>
-        <div class="mt-8 flex-col">
+        <div class="mt-0 flex-col">
           <div  class="mr-40px wshop pt-30px" v-for="(item, index) in 10" :key="index" @click="clickDetailEvent(item)">
             <WHouse :options="item" />
           </div>
