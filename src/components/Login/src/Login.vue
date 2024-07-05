@@ -39,7 +39,7 @@
       </a-form-item>
     </a-form>
     <a-button
-      style="margin-right: 20px;margin-left: 20px;font-size: 14px; background-color: #1fb081"
+      style=" height: 48px;margin-right: 20px;margin-left: 20px;font-size: 14px; background-color: #1fb081"
       size="large"
       type="primary"
       class="mt-8"
@@ -93,9 +93,11 @@ const countdownText = computed(() => {
 });
 
 function startCountdown() {
-  if (formState.username.length == 0)
-  message.error('请输入手机号');
+  if (formState.username.length == 0){
+    message.error('请输入手机号');
    return;
+  }
+  
   if (isCounting.value) return;
 
   isCounting.value = true;
