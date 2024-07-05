@@ -100,9 +100,14 @@
               src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
             />
             <div class="flex-col ml-4">
-              <div class="flex  items-center">
+              <div class="flex items-center">
                 <div class="text-15px font-medium">名称</div>
-                <a-rate class="ml-3" style="font-size: 15px;" value="5" :count="5" />
+                <a-rate
+                  class="ml-3"
+                  style="font-size: 15px"
+                  value="5"
+                  :count="5"
+                />
               </div>
               <div class="text-13px text-[#999] mt-3">类型: 经纪人</div>
               <div class="text-13px text-[#999] mt-3">所属公司: 中国移动</div>
@@ -116,8 +121,27 @@
             <div class="text-12px text-[#1fb081] mt-2">微信扫码进详情</div>
           </div>
         </div>
-        <div style="color: #fff;" class="flex font-medium text-24px w-100% h-[70px] bg-[#23c993] mt-5 color-[#fff] items-center justify-center">
-          <Icon><svg t="1720084171240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4298" width="38" height="38"><path d="M742.218667 526.666667c107.637333 0 194.848 87.573333 194.848 195.552V725.333333c0 103.168-93.578667 190.4-190.4 190.4h-45.44a30.4 30.4 0 0 1-2.517334-0.106666c-153.898667-12.778667-312.266667-80.128-411.914666-173.888C169.184 631.082667 86.933333 461.44 86.933333 303.818667c0-113.802667 84.405333-195.552 194.848-195.552 107.626667 0 194.837333 87.573333 194.837334 195.552 0 76.032-44.181333 138.773333-111.701334 169.12a507.658667 507.658667 0 0 0 81.6 100.266666c36.288 34.453333 76.544 62.336 118.752 81.813334 26.304-76.170667 94.186667-128.352 176.96-128.352z" fill="#ffffff" p-id="4299"></path></svg></Icon>
+        <div
+          style="color: #fff"
+          class="flex font-medium text-24px w-100% h-[70px] bg-[#23c993] mt-5 color-[#fff] items-center justify-center"
+        >
+          <Icon
+            ><svg
+              t="1720084171240"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="4298"
+              width="38"
+              height="38"
+            >
+              <path
+                d="M742.218667 526.666667c107.637333 0 194.848 87.573333 194.848 195.552V725.333333c0 103.168-93.578667 190.4-190.4 190.4h-45.44a30.4 30.4 0 0 1-2.517334-0.106666c-153.898667-12.778667-312.266667-80.128-411.914666-173.888C169.184 631.082667 86.933333 461.44 86.933333 303.818667c0-113.802667 84.405333-195.552 194.848-195.552 107.626667 0 194.837333 87.573333 194.837334 195.552 0 76.032-44.181333 138.773333-111.701334 169.12a507.658667 507.658667 0 0 0 81.6 100.266666c36.288 34.453333 76.544 62.336 118.752 81.813334 26.304-76.170667 94.186667-128.352 176.96-128.352z"
+                fill="#ffffff"
+                p-id="4299"
+              ></path></svg
+          ></Icon>
           <div class="ml-2">电话联系TA</div>
         </div>
       </div>
@@ -125,20 +149,81 @@
     <div class="flex mt-3 justify-between w-[100%]">
       <div class="flex flex-col flex-1">
         <a-divider />
-        <a-anchor :affix="true" direction="horizontal" :offsetTop="100" :items="anchor_list">
-    </a-anchor>
-    <div id="overview">
-      <h2><a-anchor-link href="#overview" title="概述" /></h2>
-      <p>这里是页面的概述部分...</p>
-    </div>
+        <a-anchor
+          :affix="true"
+          direction="horizontal"
+          :items="anchor_list"
+          @click="handleAnchorClick"
+          class="p-2"
+        >
+        </a-anchor>
+        <div
+          id="feature-section-one"
+          href="#feature-section-one"
+          class="flex flex-col mt-10"
+        >
+          <h1 class="text-20px">基础信息</h1>
+          <div class="flex flex-wrap w-[100%] mt-2">
+            <div
+              class="flex w-[50%] text-14px mt-5"
+              v-for="(item, index) in base_info_list"
+              :key="index"
+            >
+              <div class="text-[#999]">
+                <span
+                  style="
+                    text-align-last: justify;
+                    width: 60px;
+                    display: inline-block;
+                  "
+                  >{{ item.title }}</span
+                >:
+              </div>
+              <div class="ml-3">5{{ item.value }}</div>
+            </div>
+          </div>
+          <div
+            id="feature-section-two"
+            href="#feature-section-two"
+            class="flex flex-col mt-10"
+          >
+            <h1 class="text-20px">配套设施</h1>
+          </div>
 
-    <!-- 锚点目标2 -->
-    <div id="features">
-      <h2><a-anchor-link href="#features" title="特性" /></h2>
-      <p>这里是介绍产品特性的部分...</p>
-    </div>
+          <div
+            id="feature-section-three"
+            href="#feature-section-three"
+            class="flex flex-col mt-10"
+          >
+            <h1 class="text-20px">详细信息</h1>
+            <div class="flex w-[100%] h-[500px]">
+              <div v-html="sdcd"></div>
+            </div>
+          </div>
 
-        
+          <div
+            id="feature-section-four"
+            href="#feature-section-four"
+            class="flex flex-col mt-10 w-[100%]"
+          >
+            <h1 class="text-20px">图片</h1>
+            <div class="flex w-[100%] mt-5">
+              <a-row :gutter="[10, 20]" style="width: 100%;">
+                <a-col :span="12" v-for="(item, index) in 5" :key="index">
+                  <div class="gutter-box">col-6</div>
+                </a-col>
+              </a-row>
+            </div>
+          </div>
+
+          <div
+            id="feature-section-four"
+            href="#feature-section-four"
+            class="flex flex-col mt-10"
+          >
+            <h1 class="text-20px">位置</h1>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col ml-10 mt-4">
         <div>相似房源</div>
@@ -149,8 +234,7 @@
             @click="clickDetailEvent(item)"
             :key="index"
           >
-           <HHouse  :options="item" />
-          
+            <HHouse :options="item" />
           </div>
         </div>
       </div>
@@ -158,23 +242,41 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { HHouse } from "@/components/HHouse"
+import { HHouse } from "@/components/HHouse";
 import { LeftCircleOutlined, RightCircleOutlined } from "@ant-design/icons-vue";
-import { useRouter } from 'vue-router'
-import { ref } from 'vue' 
-const anchor_list = ref([ { key: 'overview', title: '概述' },
-{ key: 'features', title: '特性' }])
-const router = useRouter()
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+const anchor_list = ref([
+  { key: "info", title: "基础信息", href: "#feature-section-one" },
+  { key: "setting", title: "配套设施", href: "#feature-section-two" },
+  { key: "detail", title: "详细信息", href: "#feature-section-three" },
+  { key: "image", title: "图片", href: "#feature-section-four" },
+  { key: "location", title: "位置", href: "#feature-section-five" },
+]);
+const base_info_list = ref([
+  { title: "月租", value: "54" },
+  { title: "房屋户型", value: "2室1厅1卫" },
+  { title: "建筑面积", value: "60㎡" },
+  { title: "套内面积", value: "60㎡" },
+  { title: "房屋朝向", value: "朝南" },
+  { title: "装修情况", value: "精装" },
+  { title: "梯户比例", value: "10:5" },
+]);
+const router = useRouter();
 const baseUrl =
   "https://raw.githubusercontent.com/vueComponent/ant-design-vue/main/components/carousel/demo/";
 const getImgUrl = (i: number) => {
   return `${baseUrl}abstract0${i + 1}.jpg`;
 };
+const handleAnchorClick = (e: any) => {
+  console.log(e);
+  e.preventDefault(); // 阻止默认跳转
+};
 // 点击 访问详情
 const clickDetailEvent = (item: any) => {
-  console.log(item)
-  router.push('/detail')
-} 
+  console.log(item);
+  router.push("/detail");
+};
 </script>
 <style scoped lang="less">
 /* For demo */
@@ -227,5 +329,24 @@ const clickDetailEvent = (item: any) => {
 
 :deep(.slick-slide h3) {
   color: #fff;
+}
+:deep(.ant-anchor-wrapper-horizontal::before) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 0px solid rgba(5, 5, 5, 0.06);
+}
+:deep(.ant-anchor-link-title) {
+  padding-right: 40px;
+  font-size: 15px;
+}
+:deep(.ant-anchor-ink) {
+  background-color: transparent;
+}
+.gutter-box {
+  background: #0092ff;
+  padding: 8px 0;
+  height: 400px;
 }
 </style>

@@ -383,7 +383,6 @@ const changeSizeEvent = (e:any)=>{
 }
 
 // 点击 访问详情
-
 const clickDetailEvent = (item: any) => {
   console.log(item)
   router.push('/detail')
