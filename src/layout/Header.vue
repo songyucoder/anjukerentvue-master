@@ -9,7 +9,7 @@
       <a-breadcrumb-item v-for="item in breadcrumbList" :key="item.path" :to="item.path">{{ item.meta.breadcrumb }}</a-breadcrumb-item>
     </a-breadcrumb> -->
       </div>
-      <div class="text-[#333] text-15px bold font-semibold">登录/注册</div>
+      <div class="text-[#333] text-15px bold font-semibold" @click="modal1Visible=true">登录/注册</div>
     </div>
     <div class="flex mt-4" style="justify-content: space-between; width: 100%">
       <div class="flex">
@@ -135,15 +135,27 @@
           </div>
         </div>
       </div>
-   
     </div>
-   
   </div>
+  <a-modal
+      v-model:open="modal1Visible"
+      title="短信验证码登录"
+      style="top: 20px"
+      centered
+      :footer="null"
+      width="400px"
+
+    >
+     <Login>
+    </Login>
+    </a-modal>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
 import Icon from "@ant-design/icons-vue";
+import { Login } from "@/components/Login";
+const modal1Visible = ref(false)
 const top_slect = ref([
 {name: "金城时代广场", value: "0",is_select:true},
 {name: "朗悦星悦荟", value: "1",is_select:false},
