@@ -1,11 +1,11 @@
 export interface UserLoginType {
-  username: string
-  password: string
+  usermobilename: string
+  code: string
 }
 
 export interface UserType {
-  username: string
-  password: string
+  mobile: string
+  code: string
   role: string
   roleId: string
   expire_in: string

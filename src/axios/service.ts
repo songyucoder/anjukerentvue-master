@@ -6,12 +6,13 @@ import { message } from 'ant-design-vue'
 
 
 export const PATH_URL = import.meta.env.VITE_API_BASE_PATH
-
+console.log(import.meta.env)
 const abortControllerMap: Map<string, AbortController> = new Map()
 
 const axiosInstance: AxiosInstance = axios.create({
   timeout: 60000,
-  baseURL: PATH_URL
+  baseURL: 'https://api.shangpu9.com'
+  // baseURL: PATH_URL
 })
 
 axiosInstance.interceptors.request.use((res: InternalAxiosRequestConfig) => {

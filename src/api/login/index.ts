@@ -9,5 +9,5 @@ export const loginOutApi = (): Promise<IResponse> => {
 }
 // 获取验证码
 export const getCodeApi = (params:any): Promise<IResponse> => {
-  return request.post({ url: '/api/sms?mobile',params })
+  return request.get({ url: '/api/sms',params })
 }

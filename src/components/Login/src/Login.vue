@@ -55,6 +55,7 @@
       type="primary"
       class="mt-8"
       :disabled="disabled"
+      @click="onclickLoginEvent"
       >登录</a-button
     >
     <div class="login_protocol">
@@ -76,7 +77,7 @@
 <script lang="ts" setup>
 import { reactive, computed, ref } from "vue";
 import { message } from "ant-design-vue";
-import { getCodeApi } from "@/api/login";
+import { getCodeApi,loginApi } from "@/api/login";
 const countdown = ref(60);
 const isCounting = ref(false);
 const timerId = ref<NodeJS.Timeout | null>(null);
@@ -111,14 +112,13 @@ async function startCountdown() {
   }
 
   if (isCounting.value) return;
-
-  isCounting.value = true;
-  countdown.value = 60;
-
   const res = await getCodeApi({
     mobile: formState.username,
   });
+  console.log(res)
   if (res.code == 0) {
+    isCounting.value = true;
+    countdown.value = 60;
     timerId.value = setInterval(() => {
       countdown.value--;
       if (countdown.value <= 0) {
@@ -128,6 +128,16 @@ async function startCountdown() {
       }
     }, 1000);
   }
+}
+const onclickLoginEvent = async()=>{
+      const res = await loginApi({
+        mobile: formState.username,
+        code: formState.code,
+      });
+      if(res.code == 0){
+        
+      }
+
 }
 </script>
 <style scoped lang="less">

@@ -11,7 +11,7 @@ import { omit, cloneDeep } from 'lodash-es'
 const modules = import.meta.glob('../views/**/*.{vue,tsx}')
 
 /* Layout */
-export const Layout = () => import('@/layout/Layout.vue')
+export const Layout = () => import('@/layout/AppLayout.vue')
 
 export const getParentLayout = () => {
   return () =>
