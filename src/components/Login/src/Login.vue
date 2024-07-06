@@ -16,7 +16,7 @@
         name="username"
         :rules="[{ required: true, message: '请输入手机号!' }]"
       >
-        <a-input style="height: 34px;" v-model:value="formState.username" />
+        <a-input style="height: 34px" v-model:value="formState.username" />
       </a-form-item>
 
       <a-form-item
@@ -26,20 +26,31 @@
         :rules="[{ required: true, message: '请输入验证码!' }]"
       >
         <div class="flex">
-          <a-input  v-model:value="formState.code" />
+          <a-input v-model:value="formState.code" />
           <a-button
-            style="height: 34px;font-size: 12px; background-color: #1fb081;color: #fff"
+            style="
+              height: 34px;
+              font-size: 12px;
+              background-color: #1fb081;
+              color: #fff;
+            "
             type="primary"
             class="ml-1"
             :disabled="isCounting"
             @click="startCountdown"
-            >{{countdownText}}</a-button
+            >{{ countdownText }}</a-button
           >
         </div>
       </a-form-item>
     </a-form>
     <a-button
-      style=" height: 48px;margin-right: 20px;margin-left: 20px;font-size: 14px; background-color: #1fb081"
+      style="
+        height: 48px;
+        margin-right: 20px;
+        margin-left: 20px;
+        font-size: 14px;
+        background-color: #1fb081;
+      "
       size="large"
       type="primary"
       class="mt-8"
@@ -64,7 +75,8 @@
 </template>
 <script lang="ts" setup>
 import { reactive, computed, ref } from "vue";
-import { message } from 'ant-design-vue';
+import { message } from "ant-design-vue";
+import { getCodeApi } from "@/api/login";
 const countdown = ref(60);
 const isCounting = ref(false);
 const timerId = ref<NodeJS.Timeout | null>(null);
@@ -89,31 +101,34 @@ const onFinishFailed = (errorInfo: any) => {
 };
 
 const countdownText = computed(() => {
-  return isCounting.value ? `${countdown.value}s 后重新发送` : '发送验证码';
+  return isCounting.value ? `${countdown.value}s 后重新发送` : "发送验证码";
 });
 
-function startCountdown() {
-  if (formState.username.length == 0){
-    message.error('请输入手机号');
-   return;
+async function startCountdown() {
+  if (formState.username.length == 0) {
+    message.error("请输入手机号");
+    return;
   }
-  
+
   if (isCounting.value) return;
 
   isCounting.value = true;
   countdown.value = 60;
 
-  timerId.value = setInterval(() => {
-    countdown.value--;
-
-    if (countdown.value <= 0) {
-      clearInterval(timerId.value as NodeJS.Timeout);
-      isCounting.value = false;
-      countdown.value = 60;
-    }
-  }, 1000);
+  const res = await getCodeApi({
+    mobile: formState.username,
+  });
+  if (res.code == 0) {
+    timerId.value = setInterval(() => {
+      countdown.value--;
+      if (countdown.value <= 0) {
+        clearInterval(timerId.value as NodeJS.Timeout);
+        isCounting.value = false;
+        countdown.value = 60;
+      }
+    }, 1000);
+  }
 }
-
 </script>
 <style scoped lang="less">
 .login_protocol {
