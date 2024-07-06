@@ -51,12 +51,12 @@
         class="link-btn"
         href="https://www.lianjia.com/privacy"
         target="_blank"
-        >链家隐私政策</a
+        >A铺隐私政策</a
       >及<a
         class="link-btn"
         href="https://www.lianjia.com/zhuanti/protocol"
         target="_blank"
-        >链家用户使用协议</a
+        >A铺用户使用协议</a
       >
       <div class="mt-2">未注册过的手机号，验证通过后自动注册A账号</div>
     </div>
